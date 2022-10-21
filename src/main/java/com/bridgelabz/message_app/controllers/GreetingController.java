@@ -20,5 +20,10 @@ public class GreetingController {
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "world")String name){
        return service.getGreeting(counter.incrementAndGet(), String.format(template, name));
     }
+    @GetMapping("/greetingv1")
+    public Greeting greeting(@RequestParam(value = "firstName", defaultValue = "World")String firstName,
+     @RequestParam(value = "lastName", defaultValue = "")String lastName){
+        return service.getGreeting(counter.incrementAndGet(), String.format(template, firstName+" "+lastName));
+    }
     
 }

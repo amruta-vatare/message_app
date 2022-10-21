@@ -12,5 +12,4 @@ public class GreetingService implements IGreetingService {
        
         return new Greeting(counter, name);
     }
-
 }
