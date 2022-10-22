@@ -15,6 +15,9 @@ public class GreetingData {
     @Column(name = "MESSAGE")
     public String msg;
 
+    public GreetingData(){
+        
+    }
     public GreetingData(String msg ){
         this.msg = msg;
     }

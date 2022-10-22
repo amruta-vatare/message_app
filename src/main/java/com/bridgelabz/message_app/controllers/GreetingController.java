@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,7 @@ public class GreetingController {
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "world")String name){
        return service.getGreeting(counter.incrementAndGet(), String.format(template, name));
     }
+
     @GetMapping("/greetingv1")
     public Greeting greeting(@RequestParam(value = "firstName", defaultValue = "World")String firstName,
      @RequestParam(value = "lastName", defaultValue = "")String lastName){
@@ -34,4 +36,8 @@ public class GreetingController {
         service.save(greetingMessage.getMessage());
     }
     
+    @GetMapping("/greeting/{id}")
+    public GreetingMessage greetingById(@PathVariable long id){
+        return service.getGreetingById(id);
+    }
 }
