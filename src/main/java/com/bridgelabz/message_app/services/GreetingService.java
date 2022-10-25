@@ -1,5 +1,7 @@
 package com.bridgelabz.message_app.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,18 @@ public class GreetingService implements IGreetingService {
       var result = new GreetingMessage();
       result.setMessage(greeting.msg);
       return result;
+    }
+
+    @Override
+    public List<GreetingMessage> getGreetingAll() {
+     List<GreetingData> greetings = repository.findAll();
+     List<GreetingMessage>greetingMessages = new ArrayList<>();
+     for (GreetingData greeting : greetings) {
+      GreetingMessage msgGreeting = new GreetingMessage();
+      msgGreeting.setMessage(greeting.msg);
+      greetingMessages.add(msgGreeting);
+     }
+      return greetingMessages;
     }
 
     
