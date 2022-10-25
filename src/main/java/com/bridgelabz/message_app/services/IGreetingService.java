@@ -12,5 +12,5 @@ public interface IGreetingService {
     public GreetingMessage getGreetingById(long id);
     public List<GreetingMessage> getGreetingAll();
     public void updateGreeting(long id, GreetingMessage greetingMessage);
-    
+    public void deleteGreeting(long id);
 }

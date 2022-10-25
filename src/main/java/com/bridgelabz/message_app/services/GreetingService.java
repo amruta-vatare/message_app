@@ -52,5 +52,12 @@ public class GreetingService implements IGreetingService {
       repository.save(greeting);
     }
 
+    @Override
+    public void deleteGreeting(long id) {
+      GreetingData greeting = repository.findById(id).get();
+      repository.delete(greeting);
+    }
+
+
    
 }
