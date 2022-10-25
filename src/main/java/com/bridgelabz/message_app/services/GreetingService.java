@@ -45,6 +45,12 @@ public class GreetingService implements IGreetingService {
      }
       return greetingMessages;
     }
+    @Override
+    public void updateGreeting(long id, GreetingMessage greetingMessage) {
+      GreetingData greeting = repository.findById(id).get();
+      greeting.msg = greetingMessage.getMessage();
+      repository.save(greeting);
+    }
 
-    
+   
 }
